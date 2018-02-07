@@ -238,6 +238,7 @@ SubresourceIntegrityPlugin.prototype.processChunk = function processChunk(
 
     childChunk.chunks.forEach(function mapChunk(depChunk) {
       depChunkIds = depChunkIds.concat(recurse(depChunk));
+      depChunkIds = depChunkIds.filter((v, i, s) => s.indexOf(v) === i);
     });
 
     if (childChunk.files.length > 0) {
